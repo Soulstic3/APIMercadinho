@@ -1,16 +1,16 @@
 package com.br.mercadinho.entity.produto;
 
 public class ProdutoVenda {
-    private Long codigoBarras;
+    private Long codigo_barras;
     private Long quantidadeVendida;
 
     // Getters e Setters
     public Long getCodigoBarras() {
-        return codigoBarras;
+        return codigo_barras;
     }
 
     public void setCodigoBarras(Long codigoBarras) {
-        this.codigoBarras = codigoBarras;
+        this.codigo_barras = codigoBarras;
     }
 
     public Long getQuantidadeVendida() {
