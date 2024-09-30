@@ -16,13 +16,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.mercadinho.entity.produto.Produto;
+import com.br.mercadinho.entity.produto.ProdutoVenda;
 import com.br.mercadinho.repository.ProdutoRepository;
+import com.br.mercadinho.service.ProdutoService;
+
 
 @RestController
 @CrossOrigin
 public class ProdutoController {
 	@Autowired
 	private ProdutoRepository produtoRepository;
+
+	@Autowired
+	private ProdutoService produtoService;
 
 	@PostMapping("/saveProduto")
 	public String salvarProduto(@RequestBody Produto produto ) {
@@ -67,4 +73,12 @@ public class ProdutoController {
 			produtoRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.OK);
 	}
+
+	@PostMapping("/venderProdutos")
+	public ResponseEntity<String> venderProdutos(@RequestBody List<ProdutoVenda> produtosVendidos) {
+		
+		return produtoService.venderProdutos(produtosVendidos);
+	}
+	
+
 }
