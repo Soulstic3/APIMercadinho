@@ -41,6 +41,15 @@ public class ProdutoController {
 		return produtoRepository.findAll();
 	}
 	
+	@GetMapping("getProdutoid/{id}")
+	public ResponseEntity<Produto> getProdutosById(@PathVariable Long id){
+		Optional<Produto> produtoObj = produtoRepository.findById(id);
+		if (produtoObj.isPresent()) {
+	        return new ResponseEntity<Produto>(produtoObj.get(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 	@PutMapping("/updateProduto/{id}")
 	public ResponseEntity<Produto> updateProdutoById(@PathVariable Long id, @RequestBody Produto newProdutoData){
 	    Optional<Produto> oldprodutoData = produtoRepository.findById(id);
